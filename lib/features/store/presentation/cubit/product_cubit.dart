@@ -13,9 +13,7 @@ class ProductCubit extends Cubit<ProductState> {
       final products = await repository.getProducts();
       emit(ProductLoaded(products)); 
     } catch (e) {
-      emit(
-        ProductError("Gagal memuat produk. Cek koneksi."),
-      ); 
+      emit(ProductError("Gagal memuat produk. Cek koneksi internet")); // Tampilkan error
     }
   }
 }
