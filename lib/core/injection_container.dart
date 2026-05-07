@@ -5,6 +5,7 @@ import '../features/store/data/data_sources/product_remote_data_source.dart';
 import '../features/store/data/repositories/product_repository_impl.dart';
 import '../features/store/domain/repositories/product_repository.dart';
 import '../features/store/presentation/cubit/product_cubit.dart';
+import '../features/store/presentation/cubit_cart/cart_cubit.dart';
 
 final locator = GetIt.instance;
 
@@ -27,5 +28,7 @@ void setupLocator() {
   locator.registerFactory(
     () => ProductCubit(repository: locator<ProductRepository>()),
   );
+
+  locator.registerLazySingleton(() => CartCubit());
 
 }

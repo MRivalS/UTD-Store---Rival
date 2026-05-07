@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
+import '../cubit_cart/cart_cubit.dart';
 
 class ProductDetailPage extends StatelessWidget {
-  final dynamic product; 
+  final dynamic product;
 
   const ProductDetailPage({super.key, required this.product});
 
@@ -15,7 +17,17 @@ class ProductDetailPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(product.image, height: 300, fit: BoxFit.contain),
+            // Gambar Produk
+            Container(
+              color: Colors.white,
+              padding: const EdgeInsets.all(20),
+              child: Image.network(
+                product.image,
+                height: 300,
+                width: double.infinity,
+                fit: BoxFit.contain,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -43,7 +55,42 @@ class ProductDetailPage extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
-                  Text(product.description),
+                  Text(
+                    product.description,
+                    style: TextStyle(color: Colors.grey[700], height: 1.5),
+                  ),
+
+                  const SizedBox(height: 30), 
+
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<CartCubit>().addToCart(product);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            "${product.title} berhasil masuk keranjang!",
+                          ),
+                          duration: const Duration(seconds: 2),
+                          backgroundColor: Colors.green,
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      minimumSize: const Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: const Text(
+                      "Add to Cart",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

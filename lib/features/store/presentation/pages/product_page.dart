@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/injection_container.dart';
 import '../cubit/product_cubit.dart';
 import '../cubit/product_state.dart';
-// Pastikan kamu mengimport file detail page di sini
 import 'product_detail_page.dart';
 
 class ProductPage extends StatelessWidget {
@@ -17,6 +17,14 @@ class ProductPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text("UTD Store - Rival"),
           backgroundColor: Colors.blueAccent,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () {
+                context.push('/cart');
+              },
+            ),
+          ],
         ),
         body: BlocBuilder<ProductCubit, ProductState>(
           builder: (context, state) {
@@ -35,7 +43,6 @@ class ProductPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final product = state.products[index];
 
-                  // Bungkus Card dengan InkWell agar bisa diklik
                   return InkWell(
                     onTap: () {
                       Navigator.push(
