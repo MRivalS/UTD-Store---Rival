@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/injection_container.dart';
 import '../cubit/product_cubit.dart';
 import '../cubit/product_state.dart';
+import '../cubit_cart/cart_cubit.dart'; 
+import '../../data/models/cart_item_model.dart';
 import 'product_detail_page.dart';
 
 class ProductPage extends StatelessWidget {
@@ -18,10 +20,42 @@ class ProductPage extends StatelessWidget {
           title: const Text("UTD Store - Rival"),
           backgroundColor: Colors.blueAccent,
           actions: [
-            IconButton(
-              icon: const Icon(Icons.shopping_cart),
-              onPressed: () {
-                context.push('/cart');
+            BlocBuilder<CartCubit, List<CartItem>>(
+              builder: (context, cartItems) {
+                return Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.shopping_cart),
+                      onPressed: () => context.push('/cart'),
+                    ),
+                    if (cartItems.isNotEmpty)
+                      Positioned(
+                        right: 8,
+                        top: 8,
+                        child: Container(
+                          padding: const EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          constraints: const BoxConstraints(
+                            minWidth: 16,
+                            minHeight: 16,
+                          ),
+                          child: Text(
+                            '${cartItems.length}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                  ],
+                );
               },
             ),
           ],

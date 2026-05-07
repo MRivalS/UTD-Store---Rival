@@ -1,19 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import '../constants/app_constants.dart';
 
 class DioClient {
-  late Dio dio; 
+  late Dio dio;
 
   DioClient() {
     dio = Dio(
       BaseOptions(
         baseUrl: 'https://fakestoreapi.com',
-        connectTimeout: const Duration(seconds: 10),
-        receiveTimeout: const Duration(seconds: 10),
+        connectTimeout: const Duration(seconds: 5),
+        receiveTimeout: const Duration(seconds: 3),
       ),
     );
-
 
     dio.interceptors.add(
       PrettyDioLogger(

@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             Text(
-              "Selamat Datang Di Aplikasi", 
+              "Mochammad Rival Sopyan - 20123006", 
               style: TextStyle(fontSize: 18, color: Colors.white),
             ),
           ],

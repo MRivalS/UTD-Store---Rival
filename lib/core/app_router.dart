@@ -5,11 +5,11 @@ import '../features/store/presentation/pages/product_page.dart';
 import '../features/store/presentation/pages/cart_page.dart';
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/splash',
   routes: [
     GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
     GoRoute(
-      path: '/home',
+      path: '/splash',
       builder: (context, state) => const ProductPage(),
     ),
     GoRoute(path: '/cart', builder: (context, state) => const CartPage()),
