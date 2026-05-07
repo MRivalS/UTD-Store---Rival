@@ -6,10 +6,11 @@ import '../features/store/domain/repositories/product_repository.dart';
 import '../features/store/domain/splash_service.dart';
 import '../features/store/presentation/cubit/product_cubit.dart';
 import '../features/store/presentation/cubit_cart/cart_cubit.dart';
+import '../features/store/presentation/cubit/bookmark_cubit.dart';
 
 final locator = GetIt.instance;
 
-void setupLocator() {
+Future<void> setupLocator() async {
   locator.registerLazySingleton<DioClient>(() => DioClient());
 
   locator.registerLazySingleton(() => SplashService());
@@ -29,4 +30,6 @@ void setupLocator() {
   );
 
   locator.registerLazySingleton(() => CartCubit());
+
+  locator.registerLazySingleton(() => BookmarkCubit());
 }
