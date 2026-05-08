@@ -10,12 +10,10 @@ class ProductModel extends ProductEntity {
     required super.image,
   });
 
-  // Fungsi untuk mengubah JSON dari API menjadi Model
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
       id: json['id'],
       title: json['title'],
-      // Kita pastikan price selalu double agar tidak error
       price: (json['price'] as num).toDouble(),
       description: json['description'],
       category: json['category'],
@@ -23,7 +21,6 @@ class ProductModel extends ProductEntity {
     );
   }
 
-  // Fungsi untuk mengubah Model kembali ke JSON (jika perlu simpan ke DB)
   Map<String, dynamic> toJson() {
     return {
       'id': id,
