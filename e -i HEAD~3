@@ -1,0 +1,14 @@
+[33mdfd085e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m fix
+[33md89b6af[m update tampilan splash dan dio client
+[33m872d286[m tampilan untuk pesanan yang di simpan atau bookmart
+[33md7b0c24[m update tampilan  product dan cart
+[33m0f798ee[m fiksasi bug dan update
+[33m6711d33[m splash dan logic delay juga update yang lainnya
+[33mb0b96b3[m Implementasi manajemen keranjang belanja dengan cubit
+[33m5558e18[m Menambahkan navigasi ke halaman detail produk
+[33mc90ec9d[m tampilan UI daftar produk
+[33ma6a3cbe[m implementasi cubit dan manajemen produk
+[33m881d7f3[m implementasi data produk
+[33me6c4ee6[m untuk mendefinisikan entitas produk dan model
+[33m4ce85e7[m setup untuk dependency injection dan dio client
+[33mebf5208[m settingan dan struktuk awal projek
