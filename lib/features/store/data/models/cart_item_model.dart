@@ -1,5 +1,3 @@
-import '../../domain/entities/product_entity.dart';
-
 class CartItem {
   final dynamic product;
   int quantity;
